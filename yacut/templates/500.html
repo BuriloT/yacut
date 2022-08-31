@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %} Ошибка 500 - Внутренняя ошибка сервера {% endblock %}
+{% block content %}
+    <link href={{ url_for('static', filename='css/style_error.css') }} rel="stylesheet">
+    <section class="container my-5 px-4">
+        <div class="error-message">
+            <h1>Ой! Внутренняя ошибка сервера!</h1>
+            <p>Что-то пошло не так. Попробуйте обновить страницу.</p>
+            <a href="javascript:history.go(-1)" class="theme-btn">Вернуться назад</a>
+        </div>
+    </section>
+{% endblock %}
