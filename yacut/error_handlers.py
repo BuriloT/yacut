@@ -13,7 +13,7 @@ class InvalidAPIUsage(Exception):
             self.status_code = status_code
 
     def to_dict(self):
-        return dict(message = self.message)
+        return dict(message=self.message)
 
 
 @app.errorhandler(404)
@@ -27,6 +27,6 @@ def internal_error(error):
     return render_template('500.html'), 500
 
 
-@app.errorhandler(InvalidAPIUsage) 
+@app.errorhandler(InvalidAPIUsage)
 def invalid_api_usage(error):
     return jsonify(error.to_dict()), error.status_code
