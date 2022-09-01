@@ -12,7 +12,7 @@ class URLForm(FlaskForm):
     custom_id = URLField(
         'Введите ваш вариант короткой ссылки',
         validators=[Optional(),
-                    Length(1, 16),
+                    Length(max=16),
                     Regexp(
                         r'^[A-Za-z0-9]+$',
                         message='Указано недопустимое имя для ссылки')]

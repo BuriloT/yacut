@@ -7,10 +7,17 @@ from .forms import URLForm
 from .models import URL_map
 
 
-def get_unique_short_id():
+def generate_short_id():
     pattern = string.ascii_letters + string.digits
-    short_url = ''.join(random.choice(pattern) for i in range(6))
-    return short_url
+    short_id = ''.join(random.choice(pattern) for i in range(6))
+    return short_id
+
+
+def get_unique_short_id():
+    while True:
+        short_id = generate_short_id()
+        if not URL_map.query.filter_by(short=short_id).first():
+            return short_id
 
 
 @app.route('/', methods=['GET', 'POST'])
